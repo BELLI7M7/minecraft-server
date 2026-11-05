@@ -31,6 +31,21 @@ World, plugins and configs are saved in the `data/` folder.
 2. Download a server jar (for example [PaperMC](https://papermc.io/downloads/paper) or the vanilla jar from minecraft.net) and rename it to `server.jar`, placed next to `start.bat` / `start.sh`.
 3. Run `start.bat` (Windows) or `./start.sh` (Linux/macOS). The first run creates `eula.txt`: set `eula=true` after accepting the EULA, then run it again.
 
+## Option 3: GitHub Codespaces (experimental)
+
+Codespaces is built for development, so treat this as a way to try the server, not as permanent hosting.
+It stops after 30 minutes without activity and your monthly free hours are limited.
+
+1. On GitHub: **Code > Codespaces > Create codespace on main** (the repo asks for 4 cores / 16 GB).
+2. In `docker-compose.yml` accept the [EULA](https://aka.ms/MinecraftEULA) (`EULA: "TRUE"`).
+3. In the terminal: `docker compose up -d`, and watch it with `docker compose logs -f`.
+4. Open the **PORTS** tab, find `25565`, and set its visibility to **Public**.
+5. Forwarded ports are HTTPS web URLs and may not accept raw Minecraft (TCP) connections from other players.
+   If friends cannot join through the forwarded address, run a TCP tunnel such as [playit.gg](https://playit.gg) inside the codespace and share the address it gives you.
+6. To use less memory: `MC_MEMORY=8G docker compose up -d`.
+
+Stop the codespace when you are done so it does not use up your free hours.
+
 ## Joining
 
 - **Same Wi-Fi (LAN):** find the host's local IP with `ipconfig` (Windows) and join with `192.168.x.x:25565`.

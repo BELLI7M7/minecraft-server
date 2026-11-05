@@ -14,7 +14,7 @@ services:
       VERSION: "1.21.1"      # fixed version; use "LATEST" to always follow the newest
 
       # --- Memory (the host PC needs MORE than this free, ideally 16 GB+) ---
-      MEMORY: "12G"
+      MEMORY: "${MC_MEMORY:-12G}"   # override with e.g. MC_MEMORY=8G docker compose up -d
       USE_AIKAR_FLAGS: "true"   # tuned Java GC flags for big heaps
 
       # --- Gameplay ---------------------------------------------------------
