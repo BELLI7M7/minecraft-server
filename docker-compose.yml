@@ -1,0 +1,23 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: minecraft-server
+    ports:
+      - "25565:25565"
+    environment:
+      # Set to "TRUE" only after you have read and accepted the Minecraft EULA:
+      # https://aka.ms/MinecraftEULA
+      EULA: "FALSE"
+      TYPE: "PAPER"          # PAPER, VANILLA, FABRIC, FORGE ...
+      VERSION: "LATEST"      # or a fixed version like "1.21.4"
+      MEMORY: "2G"
+      MOTD: "Our Minecraft server"
+      DIFFICULTY: "normal"
+      MAX_PLAYERS: "10"
+      ONLINE_MODE: "TRUE"    # keep TRUE so only legit accounts can join
+      # OPS: "YourMinecraftName"   # uncomment to make yourself admin
+    volumes:
+      - ./data:/data         # world, plugins and configs live here
+    stdin_open: true
+    tty: true
+    restart: unless-stopped

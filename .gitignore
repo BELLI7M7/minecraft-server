@@ -1,0 +1,23 @@
+# Docker data (world, plugins, logs, configs)
+data/
+
+# Plain Java server files
+server.jar
+*.jar
+world/
+world_nether/
+world_the_end/
+logs/
+crash-reports/
+cache/
+libraries/
+versions/
+eula.txt
+usercache.json
+banned-ips.json
+banned-players.json
+ops.json
+whitelist.json
+
+# Secrets
+.env
