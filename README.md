@@ -42,6 +42,36 @@ World, plugins and configs are saved in the `data/` folder.
 Edit the environment section of `docker-compose.yml` (server type, version, memory, MOTD, max players, difficulty).
 For the Java option, edit `server.properties` after the first run.
 
+### 12 GB of RAM
+
+`MEMORY: "12G"` is already set. The PC running the server needs clearly more than 12 GB free (16 GB+ total recommended).
+On Windows, Docker Desktop (WSL2) only gets about half of your RAM by default. To raise it, create `C:\Users\<you>\.wslconfig`:
+
+```ini
+[wsl2]
+memory=14GB
+```
+
+then run `wsl --shutdown` and start Docker Desktop again.
+
+### Cracked (non-premium) players
+
+`ONLINE_MODE: "FALSE"` lets players join without a paid account. The downside: nothing proves who a player is, so anyone can join with any name, including an operator's. To stay safe:
+
+- Turn on the whitelist (`WHITELIST` / `ENFORCE_WHITELIST` in the compose file) and only list your friends.
+- Install a login plugin such as [AuthMe Reloaded](https://www.spigotmc.org/resources/authme-reloaded.6269/): download the jar and drop it into `data/plugins/`, then restart.
+- Only share the server address with people you trust.
+
+### Different Minecraft versions
+
+The ViaVersion, ViaBackwards and ViaRewind plugins are installed automatically, so players on older or newer game versions than the server can usually join.
+
+### Plugins vs mods
+
+- **Plugins** (default, `TYPE: "PAPER"`): installed only on the server. Players join with a normal client. Put extra plugin jars in `data/plugins/`.
+- **Mods** (`TYPE: "FABRIC"` or `"FORGE"`): every player must install the same mods on their own client too. Put server mod jars in `data/mods/`.
+You can't mix the two on one server.
+
 ## Backups
 
 Stop the server and copy the `data/` folder (or at least `data/world`).

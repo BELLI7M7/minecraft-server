@@ -8,14 +8,37 @@ services:
       # Set to "TRUE" only after you have read and accepted the Minecraft EULA:
       # https://aka.ms/MinecraftEULA
       EULA: "FALSE"
-      TYPE: "PAPER"          # PAPER, VANILLA, FABRIC, FORGE ...
+
+      # --- Server software -------------------------------------------------
+      TYPE: "PAPER"          # PAPER = plugins. Use FABRIC or FORGE for client+server mods.
       VERSION: "LATEST"      # or a fixed version like "1.21.4"
-      MEMORY: "2G"
+
+      # --- Memory (the host PC needs MORE than this free, ideally 16 GB+) ---
+      MEMORY: "12G"
+      USE_AIKAR_FLAGS: "true"   # tuned Java GC flags for big heaps
+
+      # --- Gameplay ---------------------------------------------------------
       MOTD: "Our Minecraft server"
       DIFFICULTY: "normal"
       MAX_PLAYERS: "10"
-      ONLINE_MODE: "TRUE"    # keep TRUE so only legit accounts can join
       # OPS: "YourMinecraftName"   # uncomment to make yourself admin
+
+      # --- Cracked (non-premium) players -----------------------------------
+      # FALSE lets launchers without a paid Mojang account join.
+      # Anyone can then join with ANY name (including an admin's), so keep the
+      # whitelist on and add an auth plugin (see README).
+      ONLINE_MODE: "FALSE"
+      ENFORCE_SECURE_PROFILE: "FALSE"
+      # WHITELIST: "friend1,friend2"
+      # ENFORCE_WHITELIST: "TRUE"
+
+      # --- Plugins (Paper) --------------------------------------------------
+      # Downloaded automatically on start. These let players on OLDER and NEWER
+      # Minecraft versions join the same server.
+      MODRINTH_PROJECTS: |
+        viaversion
+        viabackwards
+        viarewind
     volumes:
       - ./data:/data         # world, plugins and configs live here
     stdin_open: true
