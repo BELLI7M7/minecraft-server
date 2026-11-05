@@ -11,7 +11,7 @@ services:
 
       # --- Server software -------------------------------------------------
       TYPE: "PAPER"          # PAPER = plugins. Use FABRIC or FORGE for client+server mods.
-      VERSION: "LATEST"      # or a fixed version like "1.21.4"
+      VERSION: "1.21.1"      # fixed version; use "LATEST" to always follow the newest
 
       # --- Memory (the host PC needs MORE than this free, ideally 16 GB+) ---
       MEMORY: "12G"
